@@ -580,6 +580,8 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          */
         public function notices() {
 
+			return;	//ANDY
+
             global $current_screen;
 
             // Remove nag on the install page.

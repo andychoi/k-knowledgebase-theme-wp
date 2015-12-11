@@ -1,4 +1,32 @@
 <?php
+/* Disable the Admin Bar. */
+//function hide_admin_bar(){ return false; }
+//add_filter( 'show_admin_bar', 'hide_admin_bar' );
+show_admin_bar(false);
+
+/* hide admin menus */
+function annointed_admin_bar_remove() {
+        global $wp_admin_bar;
+        $wp_admin_bar->remove_menu('wp-logo');
+}
+add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
+
+function admin_tools_remove() {
+	if ( function_exists( 'remove_menu_page' ) ) {
+		remove_menu_page( 'tools.php' );
+	}
+}
+if( !current_user_can( 'manage_options' ) ) {
+	add_action( 'admin_menu', 'admin_tools_remove' );
+}
+
+add_filter('screen_options_show_screen', '__return_false');
+add_filter( 'contextual_help', 'mytheme_remove_help_tabs', 999, 3 );
+function mytheme_remove_help_tabs($old_help, $screen_id, $screen){
+    $screen->remove_help_tabs();
+    return $old_help;
+}
+
 /**
  * iPanelThemes Knowledgebase functions and definitions
  *
@@ -170,7 +198,7 @@ function ipt_kb_scripts() {
 	global $ipt_kb_version;
 
 	// Fonts from Google Webfonts
-	wp_enqueue_style( 'ipt_kb-fonts', '//fonts.googleapis.com/css?family=Oswald|Roboto:400,400italic,700,700italic', array(), $ipt_kb_version );
+	//ANDY wp_enqueue_style( 'ipt_kb-fonts', '//fonts.googleapis.com/css?family=Oswald|Roboto:400,400italic,700,700italic', array(), $ipt_kb_version );
 
 	// Main stylesheet
 	wp_enqueue_style( 'ipt_kb-style', get_stylesheet_uri(), array(), $ipt_kb_version );

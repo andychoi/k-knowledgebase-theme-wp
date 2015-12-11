@@ -137,7 +137,7 @@ if ( class_exists( 'bbP_Pencil_Unread' ) ) {
  * Add filter for converting bbpress template notice classes
  */
 function ipt_kb_bbp_template_notice_args( $args ) {
-	$args['before'] = '<div class="alert alert-info"><p>';
+	$args['before'] = '<div class="alert alert-info hidden"><p>';
 	$args['after'] = '</p></div>';
 	return $args;
 }

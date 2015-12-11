@@ -624,9 +624,9 @@ function ipt_kb_comment_form( $args = array(), $post_id = null ) {
 		'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
 		'comment_field'        => '<div class="comment-form-comment form-group"><label class="sr-only control-label" for="comment">' . _x( 'Comment', 'noun', 'ipt_kb' ) . '</label><textarea placeholder="' . _x( 'Comment', 'noun', 'ipt_kb' ) . '" class="form-control" id="comment" name="comment" rows="6" aria-required="true"></textarea></div>',
 		'must_log_in'          => '<p class="must-log-in alert alert-danger">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'ipt_kb' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
-		'logged_in_as'         => '<p class="logged-in-as alert alert-success">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'ipt_kb' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
+		'logged_in_as'         => '<p class="logged-in-as alert alert-success hidden">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'ipt_kb' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
 		'comment_notes_before' => '<p class="comment-notes alert alert-info">' . __( 'Your email address will not be published.', 'ipt_kb' ) . ( $req ? $required_text : '' ) . '</p>',
-		'comment_notes_after'  => '<p class="form-allowed-tags well well-sm">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>',
+		'comment_notes_after'  => '<p class="form-allowed-tags well well-sm hidden">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>',
 		'id_form'              => 'commentform',
 		'id_submit'            => 'submit',
 		'title_reply'          => __( 'Leave a Reply', 'ipt_kb' ),
@@ -780,7 +780,7 @@ function ipt_kb_author_meta( $author_id = null ) {
 
 	// Print the metabox
 	?>
-<div class="well author-meta">
+<!--div class="well author-meta">
 	<div class="author-avatar text-center pull-left">
 		<a href="<?php echo $archive; ?>"><?php echo get_avatar( $author_id, $size = '96' ); ?></a>
 	</div>
@@ -805,7 +805,7 @@ function ipt_kb_author_meta( $author_id = null ) {
 		</div>
 	</div>
 	<div class="clearfix"></div>
-</div>
+</div-->
 <?php if ( isset( $ipt_theme_op_settings['ads'] ) && '' != trim( $ipt_theme_op_settings['ads']['below_authorbox'] ) ) : ?>
 <div class="authorbox-advertisement">
 	<?php echo trim( $ipt_theme_op_settings['ads']['below_authorbox'] ); ?>

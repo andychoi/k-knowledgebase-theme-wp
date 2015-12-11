@@ -17,6 +17,7 @@ global $ipt_theme_op_settings;
 
 <?php wp_head(); ?>
 <?php echo $ipt_theme_op_settings['integration']['header']; ?>
+<?php $ipt_theme_op_settings['navigation']['show_login'] = true; //ANDY ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -24,7 +25,7 @@ global $ipt_theme_op_settings;
 	<?php do_action( 'before' ); ?>
 	<header id="masthead" class="site-header" role="banner">
 		<nav class="navbar navbar-default navbar-static-top main-navigation" role="navigation" id="site_navigation">
-			<div class="container">
+			<div class="container-fluid ">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -80,4 +81,7 @@ global $ipt_theme_op_settings;
 
 	<div id="content" class="site-content container">
 
-	<?php ipt_kb_breadcrumb(); ?>
+	<?php if( is_home() || is_front_page() ): else:?>
+	<?php 	ipt_kb_breadcrumb(); ?>
+	<?php endif; ?>
+
